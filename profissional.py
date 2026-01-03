@@ -157,12 +157,12 @@ if st.button("CALCULAR ANÁLISE PROFISSIONAL"):
     with col_res2:
         st.subheader("💰 Gestão de Stake")
         # Decisão de Kelly baseada no EV positivo
-        if ev_o > 0.05:
+        if ev_o > 0.10:
             f_k = calcular_kelly(p_over, p_perda_over, odd_o, agressividade)
             st.success(f"**ENTRADA: OVER {linha}**")
             st.write(f"Stake Sugerida: **R$ {banca_total * f_k:.2f}**")
             st.caption(f"({f_k:.2%} da banca)")
-        elif ev_u > 0.05:
+        elif ev_u > 0.10:
             f_k = calcular_kelly(p_under, p_perda_under, odd_u, agressividade)
             st.info(f"**ENTRADA: UNDER {linha}**")
             st.write(f"Stake Sugerida: **R$ {banca_total * f_k:.2f}**")
@@ -174,8 +174,8 @@ if st.button("CALCULAR ANÁLISE PROFISSIONAL"):
     # --- ODD MÍNIMA ---
     st.divider()
     st.subheader("💰 Odds Mínimas (Filtro de Valor)")
-    odd_min_over = calcular_odd_minima_para_ev(p_over, p_perda_over, ev_alvo=0.05)
-    odd_min_under = calcular_odd_minima_para_ev(p_under, p_perda_under, ev_alvo=0.05)
+    odd_min_over = calcular_odd_minima_para_ev(p_over, p_perda_over, ev_alvo=0.10)
+    odd_min_under = calcular_odd_minima_para_ev(p_under, p_perda_under, ev_alvo=0.10)
     
     col_odd1, col_odd2 = st.columns(2)
     with col_odd1:
@@ -198,3 +198,4 @@ if st.button("CALCULAR ANÁLISE PROFISSIONAL"):
         3. **Fórmula de Lambda:** Lambda Ajustado = (Média da Liga / 95 * Minutos Restantes * Fatores Temporais) * Fator de Cenário.
         4. **Probabilidade:** Calculada via Distribuição Binomial Negativa (k=3.0) para melhor distribuição.
         """)
+
