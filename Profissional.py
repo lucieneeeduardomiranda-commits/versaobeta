@@ -50,7 +50,7 @@ def neg_binomial_prob(k_count, mu, dispersion_param):
     p = n / (n + mu) if (n + mu) != 0 else 0
     return float(nbinom.pmf(k_count, n, p))
 
-def calcular_odd_minima_para_ev(probabilidade_ganho, probabilidade_perda, ev_alvo=0.05):
+def calcular_odd_minima_para_ev(probabilidade_ganho, probabilidade_perda, ev_alvo=0.10):
     if probabilidade_ganho <= 0: return None
     return ((ev_alvo + probabilidade_perda) / probabilidade_ganho) + 1
 
@@ -198,3 +198,4 @@ if st.button("CALCULAR ANÁLISE PROFISSIONAL"):
         3. **Fórmula de Lambda:** Lambda Ajustado = (Média da Liga / 95 * Minutos Restantes * Fatores Temporais) * Fator de Cenário.
         4. **Probabilidade:** Calculada via Distribuição Binomial Negativa (k=3.0) para melhor distribuição.
         """)
+
